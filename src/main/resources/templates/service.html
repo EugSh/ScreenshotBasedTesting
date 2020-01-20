@@ -55,36 +55,7 @@
         </div>
 
         <div class="container">
-            <div class="container-item">
-                <div class="container-item-name">
-                    <div class="div-form">
-                        <form th:if="${section=='rounds'}" method="get" enctype="multipart/form-data"
-                              action="/service/report">
-                            <button class="div-form-btn" type="submit" name="roundId" value="R2">
-                                round: R2
-                            </button>
-                        </form>
-                        <form th:if="${section=='tests'}" method="get" enctype="multipart/form-data"
-                              action="/service/test">
-                            <button class="div-form-btn" type="submit" name="testId" value="123">
-                                Test: 123
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                <div class="container-item-result">
-                    Result: None
-                </div>
-                <div class="container-item-toolbar">
-                    <div th:if="${section=='tests'}" class="btn-run-test btn-help" data-title="Run.">
-
-                    </div>
-                    <div class="btn-delete-item btn-help" data-title="Delete.">
-
-                    </div>
-                </div>
-                <div class="float-clear"></div>
-            </div>
+            
         </div>
     </div>
 
