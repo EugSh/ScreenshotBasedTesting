@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScreenshotBasedTesting</title>
+
+    <link rel="stylesheet" href="../static/assets/css.styles/default.css" type="text/css" media="all"
+          th:href="@{/assets/css.styles/default.css}">
+</head>
+<body>
+<div class="main-layout">
+    <h1 class="main-header">Screenshot Based Testing</h1>
+
+    <div class="main-content" th:data-testId="${testId}">
+
+        <div class="div-form btn-create-test">
+            <form method="get" enctype="multipart/form-data" action="/service/test">
+                <button class="div-form-btn" name="testId" th:value="${testId}">
+                    Back
+                </button>
+            </form>
+        </div>
+        <div class="container">
+            <div class="container-item div-align-center">
+                <input type="file" class="div-form-input-file" id="screenshot" accept="image/jpeg,image/png">
+                <label for="screenshot">Choose screenshot</label>
+
+            </div>
+            <div class="container-item div-align-center">
+                Screenshot id is
+                <input type="text" class="div-form-input" id="screenshotId">
+
+            </div>
+
+            <div class="container-item div-align-center">
+                <button class="div-form-btn" id="upload">
+                    Upload
+                </button>
+            </div>
+
+            <div class="container-item div-align-center">
+                <img id="preview" src="" width="100%" alt="preview">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script type="module" th:src="@{/js/upload.js}"></script>
+</html>

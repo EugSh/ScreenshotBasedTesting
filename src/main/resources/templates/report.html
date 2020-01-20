@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScreenshotBasedTesting</title>
+
+    <link rel="stylesheet" href="../static/assets/css.styles/default.css" type="text/css" media="all"
+          th:href="@{/assets/css.styles/default.css}">
+</head>
+<body>
+<div class="main-layout">
+    <h1 class="main-header">Screenshot Based Testing</h1>
+
+    <div class="main-content" th:data-roundId="${roundId}" th:data-testId="${testId != null} ? ${testId} : ''">
+
+        <div class="div-form btn-left-top">
+            <form th:if="${testId == null}" method="get" enctype="multipart/form-data" action="/service">
+                <button class="div-form-btn" type="submit" name="section" value="rounds">
+                    Back
+                </button>
+            </form>
+            <form th:unless="${testId == null}" method="get" enctype="multipart/form-data" action="/service/report">
+                <input type="text" class="__hidden" name="roundId" th:value="${roundId}">
+                <button class="div-form-btn" type="submit" name="testId" th:value="${testId}">
+                    Back
+                </button>
+            </form>
+        </div>
+
+        <div class="div-form btn-right-top">
+            <button class="div-form-btn" type="submit" id="roundId" value="some-id">
+                Delete
+            </button>
+        </div>
+
+        <div class="float-clear"></div>
+
+        <div class="container">
+            <div class="thymeleafListItem" th:each="report: ${reports}">
+                <div class="container-item">
+                    <div class="container-item-name">
+                        <div class="div-form">
+                            <form th:if="${testId == null}" method="get" enctype="multipart/form-data"
+                                  action="/service/report/test">
+                                <input class="__hidden" name="roundId" th:value="${roundId}">
+                                <button class="div-form-btn" type="submit" name="testId" th:value="${report.getId()}"
+                                        th:text="'Test: ' + ${report.getId()}">
+                                    Test: 123
+                                </button>
+                            </form>
+                            <form th:unless="${testId == null}" method="get" enctype="multipart/form-data"
+                                  action="/service/report/test/screenshot">
+                                <input class="__hidden" name="roundId" th:value="${roundId}">
+                                <input class="__hidden" name="testId" th:value="${testId}">
+                                <button class="div-form-btn" type="submit" name="screenshotId"
+                                        th:value="${report.getId()}"
+                                        th:text="'Screenshot: ' + ${report.getId()}">
+                                    Screenshot: 123
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="container-item-result"
+                         th:text="'Result: ' + ${report.getStatus().name()} + '. p/f -- '+${report.getOkCount()}+'/'+${report.getFailedCount()}">
+                        result: None
+                    </div>
+                    <div class="container-item-toolbar">
+                        <div class="btn-delete-item btn-help" data-title="Delete.">
+                        </div>
+                    </div>
+                    <div class="float-clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script type="module" th:src="@{/js/report.js}"></script>
+</html>

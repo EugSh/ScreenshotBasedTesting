@@ -1,0 +1,59 @@
+.container-item-toolbar {
+    display: block;
+    box-sizing: border-box;
+    float: left;
+    width: 18px;
+}
+
+.btn-delete-item{
+    width: 18px;
+    height: 18px;
+    background-color: #FFE4D3;
+    background-image: url("../../icons/delete.png");
+    margin: 5px;
+}
+
+.btn-choose-pref{
+    width: 18px;
+    height: 18px;
+    background-color: #FFE4D3;
+    background-image: url("../../icons/star.png");
+    margin: 5px;
+}
+
+.btn-delete-item:hover {
+    border: 2px solid red;
+    cursor: pointer;
+}
+
+.btn-choose-pref:hover{
+    border: 2px solid #FFC620;
+}
+
+.btn-run-test {
+    width: 18px;
+    height: 18px;
+    background-color: #FFE4D3;
+    background-image: url("../../icons/run.png");
+    margin: 5px;
+}
+
+
+.btn-run-test:hover {
+    border: 2px solid green;
+    cursor: pointer;
+}
+
+
+
+.btn-help:hover:after {
+    content: attr(data-title);
+    display: inline-block;
+    position: relative;
+    left: 40px;
+    z-index: 1;
+    background: rgba(255,255,230,0.9);
+    font-size: 14px;
+    padding: 5px 10px;
+    border: 1px solid #333;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--<html lang="en">-->
+<head>
+    <meta charset="UTF-8">
+    <title>ScreenshotBasedTesting</title>
+
+    <link rel="stylesheet" href="../static/assets/css.styles/default.css" type="text/css" media="all"
+          th:href="@{/assets/css.styles/default.css}">
+</head>
+<body>
+<div class="screenshot-layout">
+    <h1 class="main-header">Screenshot Based Testing</h1>
+
+    <div class="main-content" th:data-testId="${testId}" th:data-screenshotId="${screenshotId}" th:data-roundId="${roundId != null} ? ${roundId} : ''">
+        <div class="div-align-center">
+            <div class="div-form btn-left-top div-align-center">
+                <form th:if="${roundId == null}" method="get" enctype="multipart/form-data" action="/service/test">
+                    <button class="div-form-btn" type="submit" name="testId" th:value="${testId}">
+                        Back
+                    </button>
+                </form>
+                <form th:unless="${roundId == null}" method="get" enctype="multipart/form-data" action="/service/report/test">
+                    <input type="text" class="__hidden" name="roundId" th:value="${roundId}">
+                    <button class="div-form-btn" type="submit" name="testId" th:value="${testId}">
+                        Back
+                    </button>
+                </form>
+            </div>
+
+            <div class="div-form btn-right-top div-align-center">
+                <button class="div-form-btn" type="submit">
+                    Delete
+                </button>
+            </div>
+
+            <div class="float-clear"></div>
+        </div>
+
+        <div class="container">
+            <div class="container-item ">
+                <div class="container-item-name">
+                    Screen id:
+                </div>
+                <div class="float-clear"></div>
+                <img src="" width="100%" id="screenshot" alt="screenshot">
+            </div>
+            <div class="container-item __hidden" >
+                <div class="container-item-name">
+                    Preference id:
+                </div>
+                <div class="float-clear"></div>
+                <img src="" width="100%" id="reference" alt="reference">
+            </div>
+            <div class="container-item __hidden" >
+                <div class="container-item-name">
+                    Difference screenshot:
+                </div>
+                <div class="float-clear"></div>
+                <img src="" width="100%" id="difference" alt="difference">
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script type="module" th:src="@{/js/screenshot.js}"></script>
+</html>

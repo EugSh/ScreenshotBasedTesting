@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScreenshotBasedTesting</title>
+
+    <link rel="stylesheet" href="../static/assets/css.styles/default.css" type="text/css" media="all" th:href="@{/assets/css.styles/default.css}">
+</head>
+<body>
+<div class="main-layout">
+    <h1 class="main-header">Screenshot Based Testing</h1>
+
+    <div class="main-content">
+
+        <div class="div-form btn-run-round">
+            <form method="get" enctype="multipart/form-data" action="/service">
+                <button class="div-form-btn" type="submit" name="section" value="rounds">
+                    Start
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+@import "reset.css";
+@import "mainContent/mainContent.css";
+@import "mainContent/container/containerItems.css";
+@import "mainContent/topButtons/topButtons.css";
+@import "toolbar/items.css";
+@import "screenshot/screenshot.css";
+@import "test/test.css";
+@import "dotsContainer/dotsContainer.css";

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--<html lang="en">-->
+<head>
+    <meta charset="UTF-8">
+    <title>ScreenshotBasedTesting</title>
+
+    <link rel="stylesheet" href="../static/assets/css.styles/default.css" type="text/css" media="all"
+          th:href="@{/assets/css.styles/default.css}">
+</head>
+<body>
+<div class="main-layout">
+
+    <h1 class="main-header">Screenshot Based Testing</h1>
+
+    <div class="main-content" th:data-section="${section}">
+
+        <div class="div-form btn-left-top">
+            <button class="div-form-btn" type="submit">
+                Rounds
+            </button>
+        </div>
+
+        <div class="div-form btn-right-top">
+            <button class="div-form-btn" type="submit">
+                Tests
+            </button>
+        </div>
+
+        <div class="float-clear"></div>
+
+        <div class="div-form btn-run-round">
+            round with id:
+            <input type="text" class="div-form-input">
+            <button class="div-form-btn">
+                Run
+            </button>
+        </div>
+
+        <div class="div-form btn-create-test __hidden">
+            Test with id:
+            <input type="text" class="div-form-input">
+            <button class="div-form-btn">
+                create
+            </button>
+        </div>
+
+        <div class="dots-container __hidden">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="container-item">
+                <div class="container-item-name">
+                    <div class="div-form">
+                        <form th:if="${section=='rounds'}" method="get" enctype="multipart/form-data"
+                              action="/service/report">
+                            <button class="div-form-btn" type="submit" name="roundId" value="R2">
+                                round: R2
+                            </button>
+                        </form>
+                        <form th:if="${section=='tests'}" method="get" enctype="multipart/form-data"
+                              action="/service/test">
+                            <button class="div-form-btn" type="submit" name="testId" value="123">
+                                Test: 123
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="container-item-result">
+                    Result: None
+                </div>
+                <div class="container-item-toolbar">
+                    <div th:if="${section=='tests'}" class="btn-run-test btn-help" data-title="Run.">
+
+                    </div>
+                    <div class="btn-delete-item btn-help" data-title="Delete.">
+
+                    </div>
+                </div>
+                <div class="float-clear"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script type="module" th:src="@{/js/service.js}"></script>
+</html>

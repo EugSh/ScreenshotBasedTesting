@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScreenshotBasedTesting</title>
+
+    <link rel="stylesheet" href="../static/assets/css.styles/default.css" type="text/css" media="all"
+          th:href="@{/assets/css.styles/default.css}">
+</head>
+<body>
+<div class="main-layout">
+    <h1 class="main-header">Screenshot Based Testing</h1>
+
+    <div class="main-content" th:data-testId="${testId}">
+
+        <div class="div-form btn-left-top">
+            <form method="get" enctype="multipart/form-data" action="/service">
+                <button class="div-form-btn" type="submit" name="section" value="tests">
+                    Back
+                </button>
+            </form>
+        </div>
+
+        <div class="div-form btn-right-top">
+            <button class="div-form-btn" type="submit">
+                Delete test.
+            </button>
+        </div>
+
+        <div class="float-clear"></div>
+
+        <div class="div-form btn-create-test">
+            <form method="get" enctype="multipart/form-data" action="/service/test/upload">
+                <button class="div-form-btn" name="testId" th:value="${testId}">
+                    Add screenshot.
+                </button>
+            </form>
+        </div>
+        <div class="div-form screenshot-preference __hidden">
+            <button class="div-form-btn" type="submit" name="screenshotId" value="">
+                The reference screenshot is 12313
+            </button>
+
+        </div>
+        <div class="dots-container __hidden">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="thymeleafListItem" th:each="report :${reports}">
+                <div class="container-item">
+                    <div class="container-item-name">
+                        <div class="div-form">
+                            <form method="get" enctype="multipart/form-data" action="/service/test/screenshot">
+                                <input class="__hidden" name="testId" th:value="${testId}">
+                                <button class="div-form-btn" type="submit" name="screenshotId"
+                                        th:value="${report.getId()}" th:text="'Screenshot: ' + ${report.getId()}">
+                                    Screenshot: Sd21
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="container-item-result"
+                         th:text="'Result: ' + ${report.getStatus().name()} + '. p/f -- '+${report.getOkCount()}+'/'+${report.getFailedCount()}">
+                        result: failed
+                    </div>
+                    <div class="container-item-toolbar">
+                        <div class="btn-choose-pref btn-help" data-title="Choose preference.">
+                        </div>
+                        <div class="btn-run-test btn-help" data-title="Run difference.">
+
+                        </div>
+                        <div class="btn-delete-item btn-help" data-title="Delete screenshot.">
+                        </div>
+                    </div>
+                    <div class="float-clear"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</body>
+<script type="module" th:src="@{/js/test.js}"></script>
+</html>

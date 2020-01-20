@@ -1,0 +1,26 @@
+
+.div-form.btn-left-top, .div-form.btn-right-top {
+    box-sizing: border-box;
+    width: 290px;
+    background-color: #FFF3E8;
+    float: left;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.div-form.btn-create-test, .div-form.btn-run-round {
+    clear: both;
+    background-color: #FFF3E8;
+    margin: 5px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.btn-left-top:hover, .btn-right-top:hover,
+.btn-create-test:hover, .btn-run-round:hover {
+    border: 3px solid #FFE4D3;
+}
