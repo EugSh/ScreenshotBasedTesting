@@ -26,3 +26,11 @@ export function addClickListener(items, url, handler, bntExtractor, paramExtract
 export function resultFromReportsDTO(json) {
     return json["status"] + ". p/f -- " + json["okCount"] + "/" + json["failedCount"];
 }
+
+export function enableWaiter() {
+    document.querySelector(".dots-container").classList.remove("__hidden");
+}
+
+export function disableWaiter() {
+    document.querySelector(".dots-container").classList.add("__hidden");
+}

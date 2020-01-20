@@ -1,14 +1,20 @@
 import {sendRequest} from "./SendXMLRequest.js";
 import {createItem} from "./ElementCreator.js";
 import {resultFromReportsDTO} from "./Utils.js";
+import {defaultHandler} from "./SendXMLRequest.js";
+import {enableWaiter} from "./Utils.js";
+import {disableWaiter} from "./Utils.js";
 
 export function btnDeleteHandler(element, url, params, ok_handler = removeItemHandler) {
     sendRequest("delete", url, params, (request) => ok_handler(request, element));
 }
 
 export function btnRunHandler(element, url, params, ok_handler = runItemHandler) {
-    document.querySelector(".dots-container").classList.remove("__hidden");
-    sendRequest("post", url, params, (request) => ok_handler(request, element));
+    enableWaiter();
+    sendRequest("post", url, params, (request) => ok_handler(request, element), defaultHandler, (r)=>{
+        disableWaiter();
+        return defaultHandler(r);
+    });
 }
 
 export function btnChoosePrefHandler(element, url, params, ok_handler = choosePrefHandler) {
@@ -34,7 +40,7 @@ function removeItemHandler(request, element) {
 function runItemHandler(request, element) {
     let json = JSON.parse(request.responseText);
     element.parentElement.parentElement.querySelector(".container-item-result").innerText = "Result: " + resultFromReportsDTO(json);
-    document.querySelector(".dots-container").classList.add("__hidden");
+    disableWaiter();
 }
 
 function choosePrefHandler(request) {

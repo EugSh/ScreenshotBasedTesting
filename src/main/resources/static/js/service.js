@@ -2,6 +2,7 @@ import {getInput} from "./GetCorrectInput.js";
 import {sendRequest} from "./SendXMLRequest.js";
 import {createItem} from "./ElementCreator.js";
 import {resultFromReportsDTO} from "./Utils.js";
+import {disableWaiter, enableWaiter} from "./Utils.js";
 
 let section = document.querySelector(".main-content").getAttribute("data-section");
 
@@ -65,7 +66,7 @@ function runRoundHandler() {
         return;
     }
 
-    document.querySelector(".dots-container").classList.remove("__hidden");
+    enableWaiter();
     sendRequest("post",
         "/api/round/run",
         "roundId=" + roundId,
@@ -116,7 +117,7 @@ function getDefaultItemParamForTest() {
 function responseHandlerRunRound(request, itemParam) {
     let reportDTO = JSON.parse(request.responseText);
     addItemReport(reportDTO, itemParam, document.querySelector(".container"));
-    document.querySelector(".dots-container").classList.add("__hidden");
+    disableWaiter();
 }
 
 function addItemReport(reportDTO, itemParam, container) {
